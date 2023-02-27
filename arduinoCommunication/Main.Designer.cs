@@ -39,10 +39,11 @@ namespace factoryAthletic
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.enterTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enterDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enterDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enterTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remainDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -119,7 +120,8 @@ namespace factoryAthletic
             this.userNo,
             this.nameSurname,
             this.enterDate,
-            this.enterTime});
+            this.enterTime,
+            this.remainDays});
             this.usersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usersGridView.Location = new System.Drawing.Point(0, 3);
             this.usersGridView.Margin = new System.Windows.Forms.Padding(0, 3, 3, 91);
@@ -182,19 +184,12 @@ namespace factoryAthletic
             this.panel2.Size = new System.Drawing.Size(1388, 91);
             this.panel2.TabIndex = 14;
             // 
-            // enterTime
+            // userNo
             // 
-            this.enterTime.HeaderText = "Giriþ Saati";
-            this.enterTime.MinimumWidth = 10;
-            this.enterTime.Name = "enterTime";
-            this.enterTime.ReadOnly = true;
-            // 
-            // enterDate
-            // 
-            this.enterDate.HeaderText = "Giriþ Tarihi";
-            this.enterDate.MinimumWidth = 10;
-            this.enterDate.Name = "enterDate";
-            this.enterDate.ReadOnly = true;
+            this.userNo.HeaderText = "Kullanýcý No";
+            this.userNo.MinimumWidth = 10;
+            this.userNo.Name = "userNo";
+            this.userNo.ReadOnly = true;
             // 
             // nameSurname
             // 
@@ -203,12 +198,26 @@ namespace factoryAthletic
             this.nameSurname.Name = "nameSurname";
             this.nameSurname.ReadOnly = true;
             // 
-            // userNo
+            // enterDate
             // 
-            this.userNo.HeaderText = "Kullanýcý No";
-            this.userNo.MinimumWidth = 10;
-            this.userNo.Name = "userNo";
-            this.userNo.ReadOnly = true;
+            this.enterDate.HeaderText = "Giriþ Tarihi";
+            this.enterDate.MinimumWidth = 10;
+            this.enterDate.Name = "enterDate";
+            this.enterDate.ReadOnly = true;
+            // 
+            // enterTime
+            // 
+            this.enterTime.HeaderText = "Giriþ Saati";
+            this.enterTime.MinimumWidth = 10;
+            this.enterTime.Name = "enterTime";
+            this.enterTime.ReadOnly = true;
+            // 
+            // remainDays
+            // 
+            this.remainDays.HeaderText = "Kalan Gün";
+            this.remainDays.MinimumWidth = 10;
+            this.remainDays.Name = "remainDays";
+            this.remainDays.ReadOnly = true;
             // 
             // Main
             // 
@@ -251,6 +260,7 @@ namespace factoryAthletic
         private System.Windows.Forms.DataGridViewTextBoxColumn nameSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn enterDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn enterTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remainDays;
     }
 }
 

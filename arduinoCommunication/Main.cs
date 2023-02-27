@@ -77,7 +77,7 @@ namespace factoryAthletic
             if (readPort != null && readPort.IsOpen)
             {
 
-                connectionStatus.Text = "Baðlantý Baþarýlý";
+                connectionStatus.Text = "BaÄŸlantÄ± BaÅŸarÄ±lÄ±";
 
                 startButton.Enabled = false;
                 button1.Enabled = true;
@@ -100,6 +100,7 @@ namespace factoryAthletic
                 {
                     string line = sp.ReadLine();
                     this.BeginInvoke(new LineReceivedEvent(LineReceived), line);
+                    Thread.Sleep(3000); 
                 }
             }
             catch
@@ -143,8 +144,9 @@ namespace factoryAthletic
                     if (response != null && response.Split(':')[0] == "1")
                     {
                         userName = response.Split(':')[2];
-                        Logger("[INFO] Kullanýcý giriþi [id: " + userNo1 + "]");
-                        usersGridView.Rows.Insert(0, new string[] { userNo1, response.Split(':')[2], dateIn, timeIn });
+                        Logger("[INFO] KullanÄ±cÄ± giriÅŸi [id: " + userNo1 + "]");
+                        usersGridView.Rows.Insert(0, new string[] { userNo1, response.Split(':')[2], dateIn, timeIn, response.Split(':')[3] });
+                     
                         userImage.ImageLocation = "https://factoryathletic.com/panel/uploads/user/" + response.Split(':')[1];
                         userImage.SizeMode = PictureBoxSizeMode.AutoSize;
                         openDoorFunc();
@@ -197,7 +199,7 @@ namespace factoryAthletic
         {
             form = new OptionsForm();
             FormCollection fc = Application.OpenForms;
-            bool acýldý = false;
+            bool acÄ±ldÄ± = false;
             foreach (Form frm in fc)
             {
                 //iterate through
@@ -205,10 +207,10 @@ namespace factoryAthletic
                 {
                     frm.Show();
                     frm.Activate();
-                    acýldý = true;
+                    acÄ±ldÄ± = true;
                 }
             }
-            if (!acýldý)
+            if (!acÄ±ldÄ±)
             {
                 form.Show();
             }
@@ -236,14 +238,14 @@ namespace factoryAthletic
             }
             else
             {
-                MessageBox.Show("Ayarlar boþ býrakýlmamalýdýr!", "Uyarý");
+                MessageBox.Show("Ayarlar boÅŸ bÄ±rakÄ±lmamalÄ±dÄ±r!", "UyarÄ±");
             }
         }
         private void doorOpen_Click(object sender, EventArgs e)
         {
             if (writePort != null && writePort.IsOpen)
             {
-                Logger("[DEBUG] Tanýmsýz giriþ.");
+                Logger("[DEBUG] TanÄ±msÄ±z giriÅŸ.");
             }
             openDoorFunc();
         }
@@ -291,7 +293,7 @@ namespace factoryAthletic
                 startButton.Enabled = true;
                 button1.Enabled = false;
             }
-            connectionStatus.Text = "Baðlantý Durduruldu";
+            connectionStatus.Text = "BaÄŸlantÄ± Durduruldu";
         }
 
         private void Logger(string value)
@@ -330,7 +332,7 @@ namespace factoryAthletic
 
         private string MakeRequest(string requestId, string requestedClubId)
         {
-            Logger("[INFO] Kullanýcý kontrol [id: " + requestId + "]");
+            Logger("[INFO] KullanÄ±cÄ± kontrol [id: " + requestId + "]");
             StringBuilder body = null;
             string line = "";
 
@@ -349,7 +351,7 @@ namespace factoryAthletic
 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 int responseCode = (int)response.StatusCode;
-                Logger("[INFO] Kullanýcý kontrol response code: " + responseCode);
+                Logger("[INFO] KullanÄ±cÄ± kontrol response code: " + responseCode);
 
                 if (responseCode == 200)
                 {
@@ -363,10 +365,10 @@ namespace factoryAthletic
             }
             catch (Exception e)
             {
-                Logger("[ERROR] Kullanýcý kontrol hatasý " + e.Message);
+                Logger("[ERROR] KullanÄ±cÄ± kontrol hatasÄ± " + e.Message);
             }
 
-            Logger("[INFO] Kullanýcý giriþ api dönen cevap: " + body?.ToString());
+            Logger("[INFO] KullanÄ±cÄ± giriÅŸ api dÃ¶nen cevap: " + body?.ToString());
             return body?.ToString();
         }
         private bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
